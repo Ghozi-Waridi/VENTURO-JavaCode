@@ -1,0 +1,32 @@
+cupertino_icons: ^1.0.8
+  flutter_inappwebview: ^6.1.5
+  get: ^4.6.6
+  
+  panara_dialogs: ^0.1.5
+  hive_flutter: ^1.1.0
+  dio: ^5.7.0
+  flutter_easyloading: ^3.0.5
+  flutter_screenutil: ^5.9.3
+  get_storage: ^2.1.1
+  sentry_flutter: ^8.12.0
+  google_fonts: ^6.2.1
+  geolocator: ^13.0.2
+  geocoding: ^3.0.0
+  app_settings: ^5.1.1
+  loadmore: ^2.1.0
+  pull_to_refresh: ^2.0.0
+  flutter_slidable: ^3.1.2
+  cached_network_image: ^3.4.1
+  dropdown_button2: ^2.3.9
+  flutter_conditional_rendering: ^2.1.0
+  intl: ^0.20.1
+  item_count_number_button: ^1.9.2
+  input_quantity: ^2.5.1
+  firebase_core: ^3.10.0
+  firebase_analytics: ^11.4.0
+  image_cropper: ^8.1.0
+  image_picker: ^1.1.2
+  flutter_svg: ^2.0.17
+  file_picker: ^8.1.7
+  device_info_plus: ^11.2.1
+  pinput: ^5.0.1
