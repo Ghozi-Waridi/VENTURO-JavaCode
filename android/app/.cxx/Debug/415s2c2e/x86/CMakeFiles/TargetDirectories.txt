@@ -1,0 +1,2 @@
+/Users/ghoziwaridi/PEMOGRAMAN/flutter/venturo/venturo_java_code/android/app/.cxx/Debug/415s2c2e/x86/CMakeFiles/edit_cache.dir
+/Users/ghoziwaridi/PEMOGRAMAN/flutter/venturo/venturo_java_code/android/app/.cxx/Debug/415s2c2e/x86/CMakeFiles/rebuild_cache.dir

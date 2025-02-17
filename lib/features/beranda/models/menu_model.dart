@@ -22,7 +22,7 @@
           idMenu: json['id_menu'] ?? 0,
           nama: json['nama'],
           kategori: json['kategori'],
-          harga: json['harga'],
+          harga: json['harga'] ?? 0,
           deskripsi: json['deskripsi'],
           foto: json['foto'] != null && json['foto'].isNotEmpty
               ? json['foto']

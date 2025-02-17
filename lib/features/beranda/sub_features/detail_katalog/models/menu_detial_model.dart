@@ -6,10 +6,12 @@ class MenuDetailModel {
   final List<DetailModel> topping;
   final List<DetailModel> level;
 
+
   MenuDetailModel({ 
     required this.menu,
     required this.topping,
     required this.level,
+    
   });
 
   factory MenuDetailModel.fromJson(Map<String, dynamic> json) =>
@@ -19,6 +21,7 @@ class MenuDetailModel {
             json["topping"].map((x) => DetailModel.fromJson(x))) : [],
         level: json["level"] != null ? List<DetailModel>.from(
             json["level"].map((x) => DetailModel.fromJson(x))) : [],
+
       );
 
   Map<String, dynamic> toJson() => {
@@ -27,3 +30,4 @@ class MenuDetailModel {
         "level": List<dynamic>.from(level.map((x) => x.toJson())),
       };
 }
+

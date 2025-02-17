@@ -45,7 +45,7 @@ class LevelComponent extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: BerandaDetailKatalogController
-                        .to.detailMenu?.level.length ??
+                        .to.detailMenu.value?.level.length ??
                     0,
                 itemBuilder: (context, index) {
                   return Padding(
@@ -53,24 +53,24 @@ class LevelComponent extends StatelessWidget {
                     child: ChoiceChip(
                       label: Text(
                         BerandaDetailKatalogController
-                            .to.detailMenu!.level[index].keterangan!,
+                            .to.detailMenu.value!.level[index].keterangan!,
                         style: TextStyle(
                           color:
                               BerandaDetailKatalogController.to.level.value ==
                                       BerandaDetailKatalogController.to
-                                          .detailMenu!.level[index].keterangan!
+                                          .detailMenu.value!.level[index].keterangan!
                                   ? Colors.white
                                   : Colors.black,
                         ),
                       ),
                       selected: BerandaDetailKatalogController.to.level.value ==
                           BerandaDetailKatalogController
-                              .to.detailMenu!.level[index].keterangan!,
+                              .to.detailMenu.value!.level[index].keterangan!,
                       onSelected: (bool selected) {
                         if (selected) {
                           BerandaDetailKatalogController.to.level(
                               BerandaDetailKatalogController
-                                  .to.detailMenu!.level[index].keterangan!);
+                                  .to.detailMenu.value!.level[index].keterangan!);
                         }
                       },
                       shape: RoundedRectangleBorder(
@@ -80,7 +80,7 @@ class LevelComponent extends StatelessWidget {
                           color: BerandaDetailKatalogController
                                       .to.level.value ==
                                   BerandaDetailKatalogController
-                                      .to.detailMenu!.level[index].keterangan!
+                                      .to.detailMenu.value!.level[index].keterangan!
                               ? ColorStyle.primary 
                               : Colors.grey,
                           width: 1.0,

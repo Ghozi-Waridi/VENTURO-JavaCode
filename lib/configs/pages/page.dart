@@ -88,7 +88,7 @@ PESANAN-PAGE
      GetPage(
        name: Routes.pesananRoute,
        page: () => PesananScreen(),
-        binding: PesananBinding(),
+       binding: PesananBinding(),
      ),
 
     

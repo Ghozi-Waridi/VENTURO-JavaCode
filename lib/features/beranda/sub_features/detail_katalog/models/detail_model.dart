@@ -3,7 +3,7 @@ class DetailModel {
   final int idMenu;
   final String? keterangan;
   final String? type;
-  final double? harga;
+  final int? harga;
 
   DetailModel({
     required this.idDetail,

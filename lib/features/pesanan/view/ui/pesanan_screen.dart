@@ -13,53 +13,64 @@ import 'package:venturo_java_code/shared/widgets/App_Bar_Widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../models/Pesanan.dart';
+
+
 class PesananScreen extends StatelessWidget {
   PesananScreen({Key? key}) : super(key: key);
 
-  final assetsConstant = PesananAssetsConstant();
+  final controller = Get.find<PesananController>();
+
   @override
   Widget build(BuildContext context) {
-
-    final MenuDetailModel menu = Get.arguments as MenuDetailModel;
-
     return Scaffold(
-        appBar: AppBarWidget(
-          label: "Pesanan",
-          iconsData: Icons.restaurant_menu,
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: Row(
-                    children: [
-                      Image.asset(IconConstants.makanan),
-                      13.horizontalSpace,
-                      Text(
-                        "Makanan",
-                        style: GoogleTextStyle.fw800.copyWith(
-                          fontSize: 20.sp,
-                          color: ColorStyle.primary,
-                        ),
+      appBar: AppBarWidget(
+        label: "Pesanan",
+        iconsData: Icons.restaurant_menu,
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: Row(
+                  children: [
+                    Image.asset(IconConstants.makanan),
+                    const SizedBox(width: 13),
+                    Text(
+                      "Makanan",
+                      style: GoogleTextStyle.fw800.copyWith(
+                        fontSize: 20.sp,
+                        color: ColorStyle.primary,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount:10, 
-                itemBuilder: (context, index) {
-                  return CardItemComponent(
-                    menu: menu.menu,
-                  );
-                },
-              )
-              ],
-            ),
+              ),
+              Obx(() {
+                final pesananList = controller.pesanan;
+                print("Data Pesanan : $pesananList");
+                return pesananList.isNotEmpty
+                    ? ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: pesananList.length,
+                        itemBuilder: (context, index) {
+                          final menu = pesananList[index];
+                          return CardItemComponent(menu: menu.menu);
+                        },
+                      )
+                    : Center(
+                        child: Text("Tidak Ada Pesanan"),
+                      );
+              }),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
+

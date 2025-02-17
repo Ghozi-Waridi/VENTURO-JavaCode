@@ -45,7 +45,7 @@ class TopingComponent extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: BerandaDetailKatalogController
-                        .to.detailMenu?.topping.length ??
+                        .to.detailMenu.value?.topping.length ??
                     0,
                 itemBuilder: (context, index) {
                   return Padding(
@@ -53,13 +53,14 @@ class TopingComponent extends StatelessWidget {
                     child: ChoiceChip(
                       label: Text(
                         BerandaDetailKatalogController
-                            .to.detailMenu!.topping[index].keterangan!,
+                            .to.detailMenu.value!.topping[index].keterangan!,
                         style: TextStyle(
                           color:
                               BerandaDetailKatalogController.to.topping.value ==
                                       BerandaDetailKatalogController
                                           .to
-                                          .detailMenu!
+                                          .detailMenu
+                                          .value!
                                           .topping[index]
                                           .keterangan!
                                   ? Colors.white
@@ -68,13 +69,13 @@ class TopingComponent extends StatelessWidget {
                       ),
                       selected:
                           BerandaDetailKatalogController.to.topping.value ==
-                              BerandaDetailKatalogController
-                                  .to.detailMenu!.topping[index].keterangan!,
+                              BerandaDetailKatalogController.to.detailMenu
+                                  .value!.topping[index].keterangan!,
                       onSelected: (bool selected) {
                         if (selected) {
                           BerandaDetailKatalogController.to.topping(
-                              BerandaDetailKatalogController
-                                  .to.detailMenu!.topping[index].keterangan!);
+                              BerandaDetailKatalogController.to.detailMenu
+                                  .value!.topping[index].keterangan!);
                         }
                       },
                       shape: RoundedRectangleBorder(
@@ -84,7 +85,8 @@ class TopingComponent extends StatelessWidget {
                               BerandaDetailKatalogController.to.topping.value ==
                                       BerandaDetailKatalogController
                                           .to
-                                          .detailMenu!
+                                          .detailMenu
+                                          .value!
                                           .topping[index]
                                           .keterangan!
                                   ? ColorStyle.primary

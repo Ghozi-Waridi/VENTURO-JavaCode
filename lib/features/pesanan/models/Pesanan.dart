@@ -2,12 +2,12 @@
 
 class Pesanan {
   final int idMenu;
-  final int harga;
-  final String level;
-  final String topping;
+  final int? harga;
+  final List<dynamic> level;
+  final List<dynamic> topping;
   late final int jumlah;
   final String catatan;
-  final String category;
+  final String? category;
 
   Pesanan({
     required this.idMenu,

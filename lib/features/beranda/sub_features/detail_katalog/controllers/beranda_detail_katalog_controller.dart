@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:venturo_java_code/features/beranda/sub_features/detail_katalog/models/menu_detial_model.dart';
 import '../repositories/detail_katalog_repository.dart';
+import '../../../models/menu_model.dart';
+
 
 class BerandaDetailKatalogController extends GetxController {
   static BerandaDetailKatalogController get to => Get.find();
 
-  MenuDetailModel? detailMenu; // Variabel biasa, bukan Rxn
+ final Rxn<MenuDetailModel> detailMenu = Rxn<MenuDetailModel>();
 
   final RxString menu = "".obs;
   final RxString level = "".obs;
@@ -24,16 +26,22 @@ class BerandaDetailKatalogController extends GetxController {
   void onInit() {
     super.onInit();
     detailRepository = DetailKatalogRepository();
+
+    if (Get.arguments != null) {
+      final MenuModel dataModel = Get.arguments as MenuModel;
+      fetchMenuByID(dataModel.idMenu);
+    }
   }
 
-  Future<void> fetchMenuByID(int idMenu) async {
+   Future<void> fetchMenuByID(int idMenu) async {
     try {
       final data = await detailRepository.getAllMenu(idMenu);
-      detailMenu = data; 
+      detailMenu.value = data;
       update(); 
     } catch (e) {
-      print("Failed to fetch menu data by ID : $e");
-      Get.snackbar('Error', "Failed to fetch menu data by category : $e");
+      print("Failed to fetch menu data by ID: $e");
+      Get.snackbar('Error', "Failed to fetch menu data by ID: $e");
     }
   }
 }
+

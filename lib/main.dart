@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:venturo_java_code/features/beranda/controllers/beranda_controller.dart';
 import 'package:venturo_java_code/features/log_in/controllers/log_in_controller.dart';
+import 'package:venturo_java_code/features/pesanan/controllers/pesanan_controller.dart';
 import 'package:venturo_java_code/utils/services/hive_service.dart';
 
 import 'configs/pages/page.dart';
@@ -25,6 +26,7 @@ void main() async {
   Get.put(InitialController());
   Get.put(LogInController());
   Get.put(BerandaController());
+  Get.put(PesananController());
 
   runApp(const MyApp());
 }
