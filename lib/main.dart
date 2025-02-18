@@ -18,6 +18,7 @@ import 'package:get_storage/get_storage.dart';
 import 'shared/controllers/Initial_controller.dart';
 
 void main() async {
+  
   await GetStorage.init();
   await HiveService.init();
   await Hive.openBox('venturo_box');
@@ -25,8 +26,9 @@ void main() async {
   Get.put(GlobalController());
   Get.put(InitialController());
   Get.put(LogInController());
-  Get.put(BerandaController());
-  Get.put(PesananController());
+  Get.put(BerandaController());  
+  print("Main File Di Panggil");
+  Get.lazyPut(() => PesananController(), fenix: true);
 
   runApp(const MyApp());
 }

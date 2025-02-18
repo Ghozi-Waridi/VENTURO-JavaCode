@@ -13,7 +13,7 @@ import '../../../../../pesanan/models/Pesanan.dart';
 import '../../../../constants/beranda_assets_constant.dart';
 import '../../../../models/menu_model.dart';
 import '../components/list_component.dart';
-
+import '../../../../../pesanan/controllers/pesanan_controller.dart';
 
 class DetailKatalogScreen extends StatelessWidget {
   DetailKatalogScreen({Key? key}) : super(key: key);
@@ -23,6 +23,7 @@ class DetailKatalogScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = BerandaDetailKatalogController.to;
+    final pesananController = PesananController.to; // Menambahkan controller PesananController
 
     return Scaffold(
       appBar: AppBarWidget(
@@ -52,7 +53,8 @@ class DetailKatalogScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 25.h),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 25.h),
                   decoration: BoxDecoration(
                     color: ColorStyle.white,
                     borderRadius: BorderRadius.only(
@@ -88,7 +90,8 @@ class DetailKatalogScreen extends StatelessWidget {
                           Row(
                             children: [
                               IconButton(
-                                  onPressed: () {}, icon: Icon(Icons.remove_outlined)),
+                                  onPressed: () {},
+                                  icon: Icon(Icons.remove_outlined)),
                               Text("1"),
                               IconButton(
                                   onPressed: () {}, icon: Icon(Icons.add_box)),
@@ -153,20 +156,27 @@ class DetailKatalogScreen extends StatelessWidget {
                           textColor: Colors.white,
                           onPressed: () {
                             final menuData = controller.detailMenu.value;
-                            print("Data Detail Model Baru : $menuData");
-                            if (menuData == null) return;
 
-                            Get.offNamed(Routes.pesananRoute, arguments: {
-                              "pesanan" : Pesanan(
-                                  idMenu: menuData.menu.idMenu,
-                                  harga: menuData.menu.harga,
-                                  level: menuData.level,
-                                  topping: menuData.topping,
-                                  jumlah: controller.jumlah.value,
-                                  catatan: controller.catatan.value,
-                                  category: menuData.menu.kategori),
-                              "detailMenu" : menuData
-                          });
+                            final pesananMenu = Pesanan(
+                              idMenu: menuData?.menu.idMenu ?? 0,
+                              harga: menuData?.menu.harga ?? 0,
+                              menuModel: menuData!.menu,
+                              jumlah: 1, 
+                              catatan: BerandaDetailKatalogController.to.catatan.value,
+                              topping: BerandaDetailKatalogController.to.topping.value,
+                              level: BerandaDetailKatalogController.to.level.value,
+                              category: menuData?.menu.kategori ?? "makanan", 
+                            );
+                            print("DetailKatalogScreen - Data Pesanan yang akan ditambahkan: ${pesananMenu.toJson()}"); // Print data pesanan
+                            
+                            // Menambahkan pesanan ke PesananController
+                            pesananController.addDataPesanan(pesananMenu);
+
+                            // Navigasi ke halaman Pesanan
+                            Get.offNamed(
+                              Routes.pesananRoute,
+                              arguments: BerandaDetailKatalogController.to.detailMenu,
+                            );
                           },
                         ),
                       ),

@@ -1,13 +1,15 @@
-
+import 'package:venturo_java_code/features/beranda/models/menu_model.dart';
+import 'package:venturo_java_code/features/beranda/sub_features/detail_katalog/models/menu_detial_model.dart';
 
 class Pesanan {
   final int idMenu;
-  final int? harga;
-  final List<dynamic> level;
-  final List<dynamic> topping;
+  final int harga;
+  final String level;
+  final String topping;
   late final int jumlah;
   final String catatan;
-  final String? category;
+  final String category;
+  final MenuModel menuModel;
 
   Pesanan({
     required this.idMenu,
@@ -17,6 +19,7 @@ class Pesanan {
     required this.jumlah,
     required this.catatan,
     required this.category,
+    required this.menuModel,
   });
 
   factory Pesanan.fromJson(Map<String, dynamic> json) {
@@ -28,6 +31,7 @@ class Pesanan {
       jumlah: json['jumlah'],
       catatan: json['catatan'],
       category: json['category'],
+      menuModel: json['MenuModel'],
     );
   }
 
@@ -40,6 +44,7 @@ class Pesanan {
       'jumlah': jumlah,
       'catatan': catatan,
       'category': category,
+      'menuModel': menuModel,
     };
   }
 }
