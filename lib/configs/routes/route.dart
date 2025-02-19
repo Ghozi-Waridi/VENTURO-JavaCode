@@ -22,4 +22,5 @@ static const String berandaDetailKatalogRoute = '/beranda_detail_katalog';
 static const String pesananRoute = '/pesanan';
 static const String halamanUtama = '/utama';
 static const String bottomNavigationRoute = '/bottom_navigation';
+static const String voucherRoute = '/voucher';
 }

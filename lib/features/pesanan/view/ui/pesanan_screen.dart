@@ -7,6 +7,7 @@ import 'package:venturo_java_code/shared/styles/color_style.dart';
 import 'package:venturo_java_code/shared/styles/google_text_style.dart';
 import 'package:venturo_java_code/shared/widgets/App_Bar_Widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../components/detail_pesanan_component.dart';
 import 'package:get/get.dart';
 
 class PesananScreen extends StatelessWidget {
@@ -23,20 +24,46 @@ class PesananScreen extends StatelessWidget {
         label: "Pesanan",
         iconsData: Icons.restaurant_menu,
       ),
-      body: SingleChildScrollView(
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
+          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
           child: pesananController.makanan.isEmpty &&
                   pesananController.minuman.isEmpty &&
                   pesananController.snack.isEmpty
-              ? Center(
+              ?Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text("Silahkan Memesan terlebih dahulu"),
+                      Icon(
+                        Icons.shopping_cart_outlined,
+                        size: 80,
+                        color: ColorStyle.primary, // Your primary color
+                      ),
+                      SizedBox(height: 20),
+                      Text(
+                        "Silahkan Memesan terlebih dahulu",
+                        style: GoogleTextStyle.fw800.copyWith(
+                          fontSize: 22.sp,
+                          color: ColorStyle.primary,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        "Nikmati pilihan menu kami dengan berbagai kategori",
+                        style: GoogleTextStyle.fw400.copyWith(
+                          fontSize: 16.sp,
+                          color: Colors.grey[600], // Subtle text color
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ],
                   ),
-                )
+                ) 
               : Column(
                   children: [
                     // Menampilkan kategori makanan jika ada pesanan
@@ -154,6 +181,10 @@ class PesananScreen extends StatelessWidget {
                 ),
         ),
       ),
+          ),
+          DetailPesananComponent(),
+        ],
+      ) 
     );
   }
 }

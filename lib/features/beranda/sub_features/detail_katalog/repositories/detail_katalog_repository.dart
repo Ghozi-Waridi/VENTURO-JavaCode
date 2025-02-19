@@ -15,7 +15,7 @@ class DetailKatalogRepository {
         final  data = response.data['data'];
         print("data Detail Panjang Level : ${data}");
         return MenuDetailModel.fromJson(data);
-      } else {
+      } else  {
         print("error fetching menu GetID ( REPO ) : ${response.statusMessage}");
         throw Exception(
             "Error fetching menu GetID ( REPO ) : ${response.statusMessage}");
